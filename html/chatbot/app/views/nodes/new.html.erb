@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<%= render :partial => 'shared/bootstrap' %>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="col-md-6">
+
+				<h1>New Node</h1>
+
+				<%= render 'form' %>
+
+				<%= link_to 'Back', 'nodes', class: "btn btn-default" %>
+			</div>
+		</div>
+	</body>
+</html>
