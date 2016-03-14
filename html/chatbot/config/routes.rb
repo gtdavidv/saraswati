@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   get 'welcome/index'
+  
+  get 'nodes' => 'nodes#index'
+  post 'nodes' => 'nodes#create'
+  get 'nodes/new/' => 'nodes#new' #This has to go before nodes/:id
+  get 'nodes/:id' => 'nodes#show'
+  delete 'nodes/:id' => 'nodes#destroy'
 
   root 'welcome#index'
 
