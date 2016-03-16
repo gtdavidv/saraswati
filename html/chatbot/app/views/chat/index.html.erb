@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<%= render :partial => 'shared/bootstrap' %>
+		<%= render :partial => 'shared/navbar' %>
+	</head>
+	<body>
+		<% @messages.each do |msg| %>
+			<%= msg.text %><br />
+		<% end %>
+		<form action="" method="post">
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- Necessary so that the app knows this request is originating from our app (isn't a cross-site attack) and doesn't block it -->
+		<table style="position: fixed; width: 100%; bottom: 0px;"><tr>
+			<td style="width: 100%;">
+				<input type="text" name="message[text]" style="width: 100%; padding-left: 5px;" placeholder="Type your message here" autocomplete="off" />
+			</td>
+			<td style="width: 1px;">
+				<input type="submit" value="Post" />
+			</td>
+		</tr></table>
+		</form>
+	</body>
+</html>

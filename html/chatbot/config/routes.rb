@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
   get 'welcome/index'
   
+  #Routes for knowledge node viewing, creation, and deletion
   get 'nodes' => 'nodes#index'
   post 'nodes' => 'nodes#create'
   get 'nodes/new/' => 'nodes#new' #This has to go before nodes/:id
   get 'nodes/:id' => 'nodes#show'
   delete 'nodes/:id' => 'nodes#destroy'
+  
+  #Routes for chat messages
+  get 'chat' => 'chat#index'
+  post 'chat' => 'chat#create'
 
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
