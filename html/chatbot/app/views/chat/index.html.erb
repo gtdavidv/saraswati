@@ -5,6 +5,7 @@
 	</head>
 	<body>
 		<% @messages.each do |msg| %>
+			<%= if msg.bot_message then 'Saraswati: ' else 'You: ' end %>
 			<%= msg.text %><br />
 		<% end %>
 		<form action="" method="post">

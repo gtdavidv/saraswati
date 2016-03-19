@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313230518) do
+ActiveRecord::Schema.define(version: 20160318232857) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160313230518) do
     t.integer  "chat_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "bot_message", default: false
   end
 
   add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"
