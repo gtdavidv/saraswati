@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<h1>Saraswati - View Nodes</h1>
-		<%= link_to 'New node', 'new/', class: "btn btn-primary" %>
+		<%= link_to 'New node', nodes_new_path, class: "btn btn-primary" %>
 		<div style="margin-top: 1em;">
 			<% @nodes.each do |node| %>
 				<%= node.nugget %> <%= link_to 'Delete', node.id.to_s, :method => :delete, data: {confirm: 'Are you sure you want to delete this node?'}, class: 'btn btn-primary' %><br />
