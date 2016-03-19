@@ -14,13 +14,9 @@ class ChatController < ApplicationController
 		@chat = Chat.find_by_id(session[:chat_id])
 		@message = @chat.messages.new(message_params)
 		@message.save!
+		@message2 = @chat.messages.new(text: 'Hi!', bot_message: true)
+		@message2.save!
 		redirect_to chat_path
-
-		#if @message.save
-		#	redirect_to '/chat/'
-		#else
-		#	render 'new'
-		#end
 	end
 
 	private
