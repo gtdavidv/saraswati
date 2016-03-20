@@ -1,0 +1,10 @@
+<div style="border: 1px solid #000000; border-bottom: 0px;">
+	<% @nodes.each do |node| %>
+		<div class="node_search_result" onclick="selectNode(<%= node.id %>)">
+			<%= node.nugget %>
+		</div>
+	<% end %>
+	<% if @nodes.empty? then %>
+		<div class="node_search_result">No nodes</div>
+	<% end %>
+</div>

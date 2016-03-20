@@ -5,6 +5,7 @@ class NodesController < ApplicationController
 
 	def show
 		@node = Node.find(params[:id])
+		@relationships = Relationship.where('node_a_id=? OR node_b_id=?', @node.id, @node.id)
 	end
 
 	def new
@@ -19,7 +20,7 @@ class NodesController < ApplicationController
 		@node = Node.new(node_params)
 
 		if @node.save
-			redirect_to '/nodes/'
+			redirect_to nodes_path
 		else
 			render 'new'
 		end
@@ -39,7 +40,11 @@ class NodesController < ApplicationController
 		@node = Node.find(params[:id])
 		@node.destroy
 
-		redirect_to '/nodes/'
+		redirect_to nodes_path
+	end
+	
+	def search
+		@nodes = Node.where("nugget LIKE :search_string", {:search_string => "%#{params[:search]}%"}).limit(5)
 	end
 
 	private

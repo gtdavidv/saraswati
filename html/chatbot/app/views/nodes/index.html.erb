@@ -8,7 +8,7 @@
 		<%= link_to 'New node', nodes_new_path, class: "btn btn-primary" %>
 		<div style="margin-top: 1em;">
 			<% @nodes.each do |node| %>
-				<%= node.nugget %> <%= link_to 'Delete', node.id.to_s, :method => :delete, data: {confirm: 'Are you sure you want to delete this node?'}, class: 'btn btn-primary' %><br />
+				<%= link_to node.nugget, nodes_path + '/' + node.id.to_s %> <%= link_to 'Delete', node.id.to_s, :method => :delete, data: {confirm: 'Are you sure you want to delete this node?'}, class: 'btn btn-primary' %><br />
 			<% end %>
 		</div>
 	</body>
