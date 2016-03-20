@@ -4,20 +4,25 @@
 		<%= render :partial => 'shared/navbar' %>
 	</head>
 	<body>
-		<% @messages.each do |msg| %>
-			<%= if msg.bot_message then 'Saraswati: ' else 'You: ' end %>
-			<%= msg.text %><br />
-		<% end %>
+		<div id="chat_history" style="position: absolute; overflow-y: scroll; left: 0px; right: 0px; top: 50px; bottom: 26px;">
+			<% @messages.each do |msg| %>
+				<%= if msg.bot_message then 'Saraswati: ' else 'You: ' end %>
+				<%= msg.text %><br />
+			<% end %>
+		</div>
 		<form action="" method="post">
 		<%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- Necessary so that the app knows this request is originating from our app (isn't a cross-site attack) and doesn't block it -->
 		<table style="position: fixed; width: 100%; bottom: 0px;"><tr>
 			<td style="width: 100%;">
-				<input type="text" name="message[text]" style="width: 100%; padding-left: 5px;" placeholder="Type your message here" autocomplete="off" />
+				<input type="text" name="message[text]" style="width: 100%; padding-left: 5px;" placeholder="Type your message here" autocomplete="off" autofocus="autofocus" />
 			</td>
 			<td style="width: 1px;">
 				<input type="submit" value="Post" />
 			</td>
 		</tr></table>
 		</form>
+		<script type="text/javascript">
+			scrollToBottomOfChatLog();
+		</script>
 	</body>
 </html>
