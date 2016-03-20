@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   
   #Routes for knowledge node viewing, creation, and deletion
   get 'nodes' => 'nodes#index'
+  get 'node' => 'nodes#index'
   post 'nodes' => 'nodes#create'
   get 'nodes/new/' => 'nodes#new' #This has to go before nodes/:id
   get 'nodes/:id' => 'nodes#show'
+  get 'node/:id' => 'nodes#show'
   delete 'nodes/:id' => 'nodes#destroy'
+  get 'nodes/get_nodes/:search' => 'nodes#search'
   
   #Routes for chat messages
   get 'chat' => 'chat#index'

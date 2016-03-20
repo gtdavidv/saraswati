@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<%= render :partial => 'shared/bootstrap' %>
+		<%= render :partial => 'shared/navbar' %>
+	</head>
+	<body>
+		<%= link_to 'Back', nodes_path, class: 'btn btn-default' %>
+		<h1>View Node - <%= @node.nugget %></h1>
+		
+		<div style="margin-bottom: 1em;">
+			Add relationship to: <input type="text" id="node_search_text" placeholder="Type in node nugget" style="width: 450px;" onkeyup="updateNodeSearch()" />
+			<input type="hidden" id="node_search_id" />
+			<div id="node_search_options" style="position: absolute; display: none;"></div>
+		</div>
+		
+		Relationships:<br />
+		<% @relationships.each do |relationship| %>
+			<% if @node.id == relationship.node_a_id then %>
+				Connected to <%= link_to 'node ' + relationship.node_b_id.to_s, nodes_path + '/' + relationship.node_b_id.to_s %> as "<%= relationship.a_to_b_relationship %>"
+			<% else %>
+				Connected to <%= link_to 'node ' + relationship.node_a_id.to_s, nodes_path + '/' + relationship.node_a_id.to_s %> as "<%= relationship.b_to_a_relationship %>"
+			<% end %>
+		<% end %>
+		<% if @relationships.empty? then %>
+			No existing relationships
+		<% end %>
+	</body>
+</html>
