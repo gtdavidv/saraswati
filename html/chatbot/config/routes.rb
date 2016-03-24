@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'nodes/new/' => 'nodes#new' #This has to go before nodes/:id
   get 'nodes/:id' => 'nodes#show'
   get 'node/:id' => 'nodes#show'
+  post 'nodes/:id' => 'nodes#create_relationship'
   delete 'nodes/:id' => 'nodes#destroy'
   get 'nodes/get_nodes/:search' => 'nodes#search'
   

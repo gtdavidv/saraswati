@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318232857) do
+ActiveRecord::Schema.define(version: 20160318232858) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160318232857) do
     t.integer  "node_b_id"
     t.string   "a_to_b_relationship"
     t.string   "b_to_a_relationship"
-    t.decimal  "strength"
+    t.decimal  "strength",            default: 0.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

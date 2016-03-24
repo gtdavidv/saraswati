@@ -25,6 +25,13 @@ class NodesController < ApplicationController
 			render 'new'
 		end
 	end
+	
+	def create_relationship
+		@relationship = Relationship.new(node_a_id: params[:id], node_b_id: params[:relationship][:node_b_id], a_to_b_relationship: params[:relationship][:a_to_b_relationship], b_to_a_relationship: params[:relationship][:b_to_a_relationship])
+		@relationship.save!
+		
+		redirect_to nodes_path + '/' + params[:id]
+	end
 
 	def update
   		@node = Node.find(params[:id])

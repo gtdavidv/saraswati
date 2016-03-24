@@ -9,20 +9,46 @@
 		
 		<div style="margin-bottom: 1em;">
 			Add relationship to: <input type="text" id="node_search_text" placeholder="Type in node nugget" style="width: 450px;" onkeyup="updateNodeSearch()" />
-			<input type="hidden" id="node_search_id" />
 			<div id="node_search_options" style="position: absolute; display: none;"></div>
 		</div>
 		
 		Relationships:<br />
 		<% @relationships.each do |relationship| %>
 			<% if @node.id == relationship.node_a_id then %>
-				Connected to <%= link_to 'node ' + relationship.node_b_id.to_s, nodes_path + '/' + relationship.node_b_id.to_s %> as "<%= relationship.a_to_b_relationship %>"
+				Connected to <%= link_to 'node ' + relationship.node_b_id.to_s, nodes_path + '/' + relationship.node_b_id.to_s %> as "<%= relationship.a_to_b_relationship %>"<br />
 			<% else %>
-				Connected to <%= link_to 'node ' + relationship.node_a_id.to_s, nodes_path + '/' + relationship.node_a_id.to_s %> as "<%= relationship.b_to_a_relationship %>"
+				Connected to <%= link_to 'node ' + relationship.node_a_id.to_s, nodes_path + '/' + relationship.node_a_id.to_s %> as "<%= relationship.b_to_a_relationship %>"<br />
 			<% end %>
 		<% end %>
 		<% if @relationships.empty? then %>
 			No existing relationships
 		<% end %>
+		
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Define Relationship</h4>
+					</div>
+					<form action="" method="post">
+						<div class="modal-body">
+							<%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- Necessary so that the app knows this request is originating from our app (isn't a cross-site attack) and doesn't block it -->
+							<input type="hidden" id="node_search_id" name="relationship[node_b_id]" />
+							Relationship to node: <input type="text" name="relationship[a_to_b_relationship]" /><br />
+							Node's relationship: <input type="text" name="relationship[b_to_a_relationship]" /><br />
+							<input type="submit" class="btn btn-default" value="Add Relationship" />
+						</div>
+					</form>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</body>
 </html>
