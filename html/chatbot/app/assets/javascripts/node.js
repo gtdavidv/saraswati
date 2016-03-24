@@ -28,5 +28,10 @@ function updateNodeSearch(){
 
 function selectNode(nodeID){
 	document.getElementById('node_search_id').value = nodeID;
-	alert('WIP: ' + nodeID);
+	var oDiv = document.getElementById('node_search_options');
+	oDiv.innerHTML = '';
+	oDiv.style.display = 'none';
+	document.getElementById('node_search_text').value = '';
+	
+	$("#myModal").modal(); //Bullshit jquery call to open the modal because Bootstrap requires jquery
 }
