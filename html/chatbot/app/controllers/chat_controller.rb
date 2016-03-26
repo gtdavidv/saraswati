@@ -1,6 +1,8 @@
 class ChatController < ApplicationController
 	include NlqProcessor #Separate file in the lib folder that contains the code for processing queries
 	
+	before_filter :authorize
+
 	def index
 		if !(defined? session[:chat_id]) || !session[:chat_id]
 			@chat = Chat.create

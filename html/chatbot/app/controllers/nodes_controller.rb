@@ -1,4 +1,7 @@
 class NodesController < ApplicationController
+	
+	before_filter :authorize
+
 	def index
 		@nodes = Node.all
 	end
