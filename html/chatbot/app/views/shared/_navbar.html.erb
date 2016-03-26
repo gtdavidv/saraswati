@@ -2,7 +2,8 @@
 
   <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-      <a class="navbar-brand" href="#">Chatbot</a>
+      <!-- <a class="navbar-brand" href="#">Chatbot</a> -->
+	  <%= link_to 'Chatbot', root_path, class: 'navbar-brand' %>
       <ul class="nav nav-pills navbar-right" style="margin: 5px 5px 0px 0px;">
   		<li id="home" role="presentation"><%= link_to 'Home', root_path %></li>
   		<li id="nodes" role="presentation"><%= link_to 'Nodes', nodes_path %></li>

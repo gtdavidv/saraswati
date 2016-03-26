@@ -2,6 +2,7 @@ module NlqProcessor #Note that for this to work lib has to be included in the co
 	require "net/http" #Will be used later to open an http request
 	require "uri" #Will be used later to open an http request
 	require 'json'
+	require 'engtagger'
 	
 	def http_request(uri)
 		Net::HTTP.start(uri.host, uri.port) do |http|
@@ -55,11 +56,16 @@ module NlqProcessor #Note that for this to work lib has to be included in the co
 		else
 			returnString += 'other'
 		end
+		returnString += ' '
 		
-		uri = URI.parse("http://text-processing.com/api/tag/")
-		resultOutput = Net::HTTP.post_form(uri, {'text' => query})
-		jsonResult = JSON.parse(resultOutput.body)
-		returnString += jsonResult['text']
+		#uri = URI.parse("http://text-processing.com/api/tag/")
+		#resultOutput = Net::HTTP.post_form(uri, {'text' => query})
+		#jsonResult = JSON.parse(resultOutput.body)
+		#returnString += jsonResult['text']
+		tgr = EngTagger.new
+		#resultOutput = tgr.add_tags(query) #Uses <tag></tag> notation
+		resultOutput = tgr.get_readable(query) #Uses /TAG notation
+		returnString += resultOutput
 		
 		returnString
 	end
