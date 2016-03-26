@@ -15,9 +15,9 @@
 		Relationships:<br />
 		<% @relationships.each do |relationship| %>
 			<% if @node.id == relationship.node_a_id then %>
-				Connected to <%= link_to 'node ' + relationship.node_b_id.to_s, nodes_path + '/' + relationship.node_b_id.to_s %> as "<%= relationship.a_to_b_relationship %>"<br />
+				Connected to <%= link_to @nuggetArray[relationship.id], nodes_path + '/' + relationship.node_b_id.to_s %> as "<%= relationship.a_to_b_relationship %>"<br />
 			<% else %>
-				Connected to <%= link_to 'node ' + relationship.node_a_id.to_s, nodes_path + '/' + relationship.node_a_id.to_s %> as "<%= relationship.b_to_a_relationship %>"<br />
+				Connected to <%= link_to @nuggetArray[relationship.id], nodes_path + '/' + relationship.node_a_id.to_s %> as "<%= relationship.b_to_a_relationship %>"<br />
 			<% end %>
 		<% end %>
 		<% if @relationships.empty? then %>

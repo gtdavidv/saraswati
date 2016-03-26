@@ -6,6 +6,17 @@ class NodesController < ApplicationController
 	def show
 		@node = Node.find(params[:id])
 		@relationships = Relationship.where('node_a_id=? OR node_b_id=?', @node.id, @node.id)
+		
+		@nuggetArray = []
+		@relationships.each do |relationship|
+			node2 = nil
+			if relationship.node_a_id == @node.id
+				node2 = Node.find(relationship.node_b_id)
+			else
+				node2 = Node.find(relationship.node_a_id)
+			end
+			@nuggetArray[relationship.id] = node2.nugget
+		end
 	end
 
 	def new
