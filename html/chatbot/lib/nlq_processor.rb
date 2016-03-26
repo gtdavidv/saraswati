@@ -37,7 +37,7 @@ module NlqProcessor #Note that for this to work lib has to be included in the co
 		#Currently stripping out all punctuation. More advanced understanding will require it, but works for now
 		#Words being stripped out need to be checked to make sure they aren't part of a larger word (e.g., "pleased" becomes "d")
 		stripArray = ['please', 'can you', 'will you', 'well', '!', '?', '.', ','] #Words/characters that will be stripped because they don't mean anything
-		interrogativeArray = ['who', 'what', 'when', 'where', 'why', 'how'] #Words that will be matched for interrogatives
+		interrogativeArray = ['who', 'what', 'when', 'where', 'why', 'how', 'which', 'whose'] #Words that will be matched for interrogatives
 		commandArray = ['tell', 'explain', 'elaborate', 'say'] #Words that will be matched for commands
 		interjectionArray = ['wow', 'damn', 'shit', 'fuck', 'oh', 'cool'] #Words that will be matched for interjections
 		
@@ -58,13 +58,15 @@ module NlqProcessor #Note that for this to work lib has to be included in the co
 		end
 		returnString += ' '
 		
-		#uri = URI.parse("http://text-processing.com/api/tag/")
-		#resultOutput = Net::HTTP.post_form(uri, {'text' => query})
-		#jsonResult = JSON.parse(resultOutput.body)
-		#returnString += jsonResult['text']
 		tgr = EngTagger.new
 		#resultOutput = tgr.add_tags(query) #Uses <tag></tag> notation
-		resultOutput = tgr.get_readable(query) #Uses /TAG notation
+		resultOutput = tgr.get_readable(strippedQuery) #Uses /TAG notation
+		splitArray2 = resultOutput.split(' ')
+		splitWord = splitArray2[0].split('/')
+		if splitWord[1][0,1] == 'V'
+			returnString += 'command'
+			returnString += ' '
+		end
 		returnString += resultOutput
 		
 		returnString
