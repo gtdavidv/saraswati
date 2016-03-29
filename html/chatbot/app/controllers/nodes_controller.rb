@@ -66,6 +66,7 @@ class NodesController < ApplicationController
 	
 	def search
 		@nodes = Node.where("nugget LIKE :search_string", {:search_string => "%#{params[:search]}%"}).limit(5)
+		render :layout => 'blank'
 	end
 
 	private
