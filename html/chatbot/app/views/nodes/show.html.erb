@@ -1,9 +1,8 @@
 <html>
 	<head>
-		<%= render :partial => 'shared/bootstrap' %>
-		<%= render :partial => 'shared/navbar' %>
 	</head>
 	<body>
+		<%= render :partial => 'shared/navbar' %>
 		<%= link_to 'Back', nodes_path, class: 'btn btn-default' %>
 		<h1>View Node - <%= @node.nugget %></h1>
 		
