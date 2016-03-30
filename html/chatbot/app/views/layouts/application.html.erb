@@ -7,14 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container-fluid">
 
 <% if current_user %>
   Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
 <% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<div class="btn-group">
+  <%= link_to 'Login', '/login', class:"btn btn-default" %> 
+  <%= link_to 'Signup', '/signup', class:"btn btn-default" %>
+</div>
 <% end %>
 
 <%= yield %>
-
+</div>
 </body>
 </html>
