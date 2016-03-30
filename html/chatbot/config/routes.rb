@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   get 'welcome/index'
   
   #Routes for knowledge node viewing, creation, and deletion
@@ -25,6 +26,10 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+
+  #Routes for admin panel
+  get 'admin' => 'admin#home'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
