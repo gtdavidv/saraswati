@@ -1,0 +1,27 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<%= render :partial => 'shared/navbar' %>
+		<div class="container-fluid">
+			<div class="col-md-6">
+
+				<h1>Edit Node</h1>
+
+				<%= form_for :node, :method => :POST do |f| %>
+				  <p>
+					<%= f.label :nugget %><br>
+					<%= f.text_area :nugget, class: "form-control" %>
+				  </p>
+				 
+				  <p>
+					<%= f.submit class: "btn btn-primary"%>
+				  </p>
+				 
+				<% end %>
+
+				<%= link_to 'Back', 'nodes', class: "btn btn-default" %>
+			</div>
+		</div>
+	</body>
+</html>

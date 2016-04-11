@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'node' => 'nodes#index'
   post 'nodes' => 'nodes#create'
   get 'nodes/new/' => 'nodes#new' #This has to go before nodes/:id
+  get 'nodes/:id/edit' => 'nodes#edit'
+  post 'nodes/:id/edit' => 'nodes#update'
   get 'nodes/:id' => 'nodes#show'
   get 'node/:id' => 'nodes#show'
   post 'nodes/:id' => 'nodes#create_relationship'
