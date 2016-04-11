@@ -51,7 +51,7 @@ class NodesController < ApplicationController
   		@node = Node.find(params[:id])
  
   		if @node.update(node_params)
-    		redirect_to @node
+    		redirect_to nodes_path + '/' + @node.id.to_s
   		else
     		render 'edit'
   		end

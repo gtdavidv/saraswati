@@ -9,7 +9,7 @@ class ChatController < ApplicationController
 				@chat = Chat.create
 			else
 				if Chat.exists?(user_id: session[:user_id])
-					@chat = Chat.where('user_id' => session[:user_id])
+					@chat = Chat.where('user_id' => session[:user_id]).first
 				else
 					@chat = Chat.create(user_id: session[:user_id])
 				end
